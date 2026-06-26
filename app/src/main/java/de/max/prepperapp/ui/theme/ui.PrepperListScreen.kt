@@ -147,7 +147,9 @@ fun PrepperListScreen(
                     shareChooserTitle
                 )
 
-                context.startActivity(shareIntent)
+                PrepperInterstitialAdManager.showIfAvailable(context) {
+                    context.startActivity(shareIntent)
+                }
             },
             enabled = items.isNotEmpty(),
             modifier = Modifier.fillMaxWidth()

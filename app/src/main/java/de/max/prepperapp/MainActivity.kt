@@ -12,6 +12,7 @@ import com.google.android.gms.ads.MobileAds
 import de.max.prepperapp.ui.PrepperAdBanner
 import de.max.prepperapp.ui.PrepperMainScreen
 import de.max.prepperapp.ui.theme.PrepperAppTheme
+import de.max.prepperapp.ui.PrepperInterstitialAdManager
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,6 +21,8 @@ class MainActivity : ComponentActivity() {
 
         MobileAds.initialize(this) {
         }
+
+        PrepperInterstitialAdManager.load(this)
 
         setContent {
             PrepperAppTheme {
