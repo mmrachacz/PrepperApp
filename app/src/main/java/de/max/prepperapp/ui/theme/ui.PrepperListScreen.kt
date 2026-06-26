@@ -773,29 +773,39 @@ fun PrepperShoppingListRow(
             }
         )
 
-        Text(
-            text = item.name,
-            modifier = Modifier.weight(1f),
-            style = MaterialTheme.typography.bodyMedium.copy(
-                textDecoration = if (isChecked) {
-                    TextDecoration.LineThrough
-                } else {
-                    TextDecoration.None
-                }
+        Row(
+            modifier = Modifier
+                .weight(1f)
+                .clickable {
+                    onCheckedChange(item, !isChecked)
+                },
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = item.name,
+                modifier = Modifier.weight(1f),
+                style = MaterialTheme.typography.bodyMedium.copy(
+                    textDecoration = if (isChecked) {
+                        TextDecoration.LineThrough
+                    } else {
+                        TextDecoration.None
+                    }
+                )
             )
-        )
 
-        Text(
-            text = formatPrepperShoppingQuantity(item),
-            style = MaterialTheme.typography.bodyMedium.copy(
-                fontWeight = FontWeight.Bold,
-                textDecoration = if (isChecked) {
-                    TextDecoration.LineThrough
-                } else {
-                    TextDecoration.None
-                }
+            Text(
+                text = formatPrepperShoppingQuantity(item),
+                style = MaterialTheme.typography.bodyMedium.copy(
+                    fontWeight = FontWeight.Bold,
+                    textDecoration = if (isChecked) {
+                        TextDecoration.LineThrough
+                    } else {
+                        TextDecoration.None
+                    }
+                )
             )
-        )
+        }
 
         IconButton(
             onClick = {
