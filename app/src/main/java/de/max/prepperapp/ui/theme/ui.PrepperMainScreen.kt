@@ -205,7 +205,12 @@ fun PrepperMainScreen(modifier: Modifier = Modifier) {
 
     val calculation = SupplyCalculator.calculate(profile)
 
-    val allShoppingItems = calculation.shoppingList + customItems
+    val localizedShoppingItems = localizePrepperSupplyItems(
+        context = context,
+        items = calculation.shoppingList
+    )
+
+    val allShoppingItems = localizedShoppingItems + customItems
 
     val visibleShoppingItems = allShoppingItems.filterNot { item ->
         hiddenItemKeys.contains(item.prepperKey())
@@ -218,6 +223,7 @@ fun PrepperMainScreen(modifier: Modifier = Modifier) {
     }.toSet()
 
     val shareText = buildPrepperShareText(
+        context = context,
         profile = profile,
         items = visibleShoppingItems,
         checkedItemKeys = visibleCheckedItemKeys
@@ -520,19 +526,19 @@ fun PrepperTopHeader(
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     PrepperHeaderChip(
-                        text = "Familie",
+                        text = stringResource(id = R.string.header_chip_family),
                         containerColor = chipContainerColor,
                         contentColor = chipContentColor
                     )
 
                     PrepperHeaderChip(
-                        text = "Vorrat",
+                        text = stringResource(id = R.string.header_chip_supplies),
                         containerColor = chipContainerColor,
                         contentColor = chipContentColor
                     )
 
                     PrepperHeaderChip(
-                        text = "Checkliste",
+                        text = stringResource(id = R.string.header_chip_checklist),
                         containerColor = chipContainerColor,
                         contentColor = chipContentColor
                     )

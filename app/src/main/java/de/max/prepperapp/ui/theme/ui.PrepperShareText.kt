@@ -1,43 +1,72 @@
 package de.max.prepperapp.ui
 
+import android.content.Context
+import de.max.prepperapp.R
 import de.max.prepperapp.domain.HouseholdProfile
 import de.max.prepperapp.domain.ShoppingListItem
 
 fun buildPrepperShareText(
+    context: Context,
     profile: HouseholdProfile,
     items: List<ShoppingListItem>,
     checkedItemKeys: Set<String>
 ): String {
     val builder = StringBuilder()
 
-    builder.appendLine("PrepperApp Einkaufsliste")
+    val dogText = if (profile.hasDog) {
+        context.getString(R.string.share_dog_yes)
+    } else {
+        context.getString(R.string.share_dog_no)
+    }
+
+    builder.appendLine(context.getString(R.string.share_title))
+
     builder.appendLine(
-        "${profile.days} Tage · " +
-                "${profile.adults} Erwachsene · " +
-                "${profile.smallChildren} kleine Kinder · " +
-                "${profile.bigChildren} große Kinder · " +
-                if (profile.hasDog) "1 Hund" else "kein Hund"
+        context.getString(
+            R.string.share_profile_line,
+            profile.days,
+            profile.adults,
+            profile.smallChildren,
+            profile.bigChildren,
+            dogText
+        )
     )
 
     if (profile.dayDiaperChildren > 0 || profile.nightDiaperChildren > 0) {
         builder.appendLine(
-            "${profile.dayDiaperChildren} mit Tageswindeln · " +
-                    "${profile.nightDiaperChildren} mit Nachtwindeln"
+            context.getString(
+                R.string.share_diaper_line,
+                profile.dayDiaperChildren,
+                profile.nightDiaperChildren
+            )
         )
     }
 
     val preferences = buildList {
-        if (profile.preferBudget) add("sparsam")
-        if (profile.preferVegetarian) add("vegetarisch")
-        if (profile.preferLowCooking) add("wenig Kochen")
+        if (profile.preferBudget) {
+            add(context.getString(R.string.share_preference_budget))
+        }
+
+        if (profile.preferVegetarian) {
+            add(context.getString(R.string.share_preference_vegetarian))
+        }
+
+        if (profile.preferLowCooking) {
+            add(context.getString(R.string.share_preference_low_cooking))
+        }
     }
 
     if (preferences.isNotEmpty()) {
-        builder.appendLine("Vorlieben: ${preferences.joinToString(", ")}")
+        builder.appendLine(
+            context.getString(
+                R.string.share_preferences_label,
+                preferences.joinToString(", ")
+            )
+        )
     }
 
     builder.appendLine()
-    builder.appendLine("Einkaufsliste")
+    builder.appendLine(context.getString(R.string.share_list_title))
     builder.appendLine()
 
     val groupedItems = items.groupBy { item ->
