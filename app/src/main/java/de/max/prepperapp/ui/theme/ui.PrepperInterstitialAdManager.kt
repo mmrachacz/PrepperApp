@@ -20,6 +20,10 @@ object PrepperInterstitialAdManager {
     private var lastShownRealtime: Long = 0L
 
     fun load(context: Context) {
+        if (!PrepperAdConsentState.canRequestAds) {
+            return
+        }
+
         if (isLoading || interstitialAd != null) {
             return
         }
@@ -50,6 +54,11 @@ object PrepperInterstitialAdManager {
         context: Context,
         onFinished: () -> Unit
     ) {
+        if (!PrepperAdConsentState.canRequestAds) {
+            onFinished()
+            return
+        }
+
         val activity = context as? Activity
 
         if (activity == null) {

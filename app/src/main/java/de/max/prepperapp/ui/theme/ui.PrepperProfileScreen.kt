@@ -32,6 +32,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import de.max.prepperapp.R
+import androidx.compose.ui.platform.LocalContext
 
 @Composable
 fun PrepperProfileScreen(
@@ -444,6 +445,8 @@ fun PrepperInfoLegalCard() {
         mutableStateOf(false)
     }
 
+    val context = LocalContext.current
+
     PrepperSectionCard(
         title = stringResource(id = R.string.info_legal_title),
         subtitle = stringResource(id = R.string.info_legal_subtitle)
@@ -501,6 +504,17 @@ fun PrepperInfoLegalCard() {
                 title = stringResource(id = R.string.info_privacy_title),
                 text = stringResource(id = R.string.info_privacy_text)
             )
+
+            if (PrepperAdConsentState.isPrivacyOptionsRequired) {
+                OutlinedButton(
+                    onClick = {
+                        PrepperConsentManager.showPrivacyOptions(context)
+                    },
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(text = stringResource(id = R.string.info_privacy_options_button))
+                }
+            }
 
             PrepperSoftDivider()
 

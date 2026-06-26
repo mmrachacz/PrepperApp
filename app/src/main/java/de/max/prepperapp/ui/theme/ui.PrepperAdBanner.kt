@@ -19,6 +19,10 @@ private const val PREPPER_TEST_BANNER_AD_UNIT_ID = "ca-app-pub-3940256099942544/
 fun PrepperAdBanner(
     modifier: Modifier = Modifier
 ) {
+    if (!PrepperAdConsentState.canRequestAds) {
+        return
+    }
+
     Box(
         modifier = modifier
             .fillMaxWidth()
