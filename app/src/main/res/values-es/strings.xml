@@ -245,7 +245,7 @@
     <string name="info_sources_title">Nota sobre fuentes</string>
     <string name="info_sources_text">La planificación se basa conceptualmente en recomendaciones públicas conocidas sobre preparación ante emergencias, especialmente en fuentes alemanas sobre protección civil, preparación ante catástrofes, abastecimiento de alimentos y planificación nutricional. Esta app no es un servicio oficial del gobierno.</string>
     <string name="info_privacy_title">Privacidad</string>
-    <string name="info_privacy_text">Actualmente, la app guarda tus datos solo de forma local en tu dispositivo. No se crean cuentas y no se transmiten datos de suministros a ningún servidor.</string>
+    <string name="info_privacy_text">La app guarda tus datos de suministros localmente en tu dispositivo. No se crean cuentas y no se envían datos de suministros a nuestro servidor. Para anuncios y opciones de privacidad, pueden utilizarse servicios de Google/AdMob. Según tu elección, pueden procesarse datos técnicos del dispositivo, de publicidad y de consentimiento.</string>
     <string name="info_responsibility_title">Responsabilidad personal</string>
     <string name="info_responsibility_text">Comprueba por tu cuenta la caducidad, el almacenamiento, alergias, medicamentos, combustibles y cuestiones de seguridad. Especialmente el gas, el combustible y los medicamentos requieren manejo y almacenamiento adecuados.</string>
     <string name="info_version_title">Versión</string>

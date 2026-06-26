@@ -266,7 +266,7 @@
     <string name="info_sources_text">Die Planung orientiert sich inhaltlich an öffentlich bekannten Empfehlungen zur privaten Notfallvorsorge, insbesondere am Bundesamt für Bevölkerungsschutz und Katastrophenhilfe sowie an der Bundesanstalt für Landwirtschaft und Ernährung. Die App ist kein offizielles Behördenangebot.</string>
 
     <string name="info_privacy_title">Datenschutz</string>
-    <string name="info_privacy_text">Aktuell speichert die App deine Eingaben nur lokal auf deinem Gerät. Es werden keine Konten angelegt und keine Vorratsdaten an einen Server übertragen.</string>
+    <string name="info_privacy_text">Die App speichert deine Vorratsangaben lokal auf deinem Gerät. Es werden keine Konten erstellt und keine Vorratsdaten an unseren Server übertragen. Für Werbung und Datenschutzauswahl können jedoch Dienste von Google/AdMob verwendet werden. Dabei können je nach Auswahl technische Geräte-, Werbe- und Zustimmungsinformationen verarbeitet werden.</string>
 
     <string name="info_responsibility_title">Eigenverantwortung</string>
     <string name="info_responsibility_text">Bitte kontrolliere Haltbarkeit, Lagerung, Allergien, Medikamente, Brennstoffe und Sicherheitsfragen selbst. Besonders bei Gas, Kraftstoff und Medikamenten gelten Sicherheits- und Lagerhinweise.</string>

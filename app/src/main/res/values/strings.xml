@@ -266,7 +266,7 @@
     <string name="info_sources_text">The planning is conceptually based on publicly known emergency preparedness recommendations, especially from German public sources for civil protection, disaster preparedness, food supply and nutrition planning. This app is not an official government service.</string>
 
     <string name="info_privacy_title">Privacy</string>
-    <string name="info_privacy_text">Currently, the app stores your input only locally on your device. No accounts are created and no supply data is transferred to a server.</string>
+    <string name="info_privacy_text">The app stores your supply inputs locally on your device. No accounts are created and no supply data is sent to our server. For ads and privacy choices, Google/AdMob services may be used. Depending on your choices, technical device, advertising and consent information may be processed.</string>
 
     <string name="info_responsibility_title">Personal responsibility</string>
     <string name="info_responsibility_text">Please check shelf life, storage, allergies, medication, fuels and safety issues yourself. Especially gas, fuel and medication require proper handling and storage.</string>
