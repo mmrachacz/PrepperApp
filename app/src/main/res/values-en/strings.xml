@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">SupplyCompass</string>
+
+    <string name="header_subtitle">Plan your emergency supplies for family, children and pets.</string>
+
+    <string name="navigation_overview">Overview</string>
+    <string name="navigation_profile">Profile</string>
+    <string name="navigation_list">List</string>
+</resources>
