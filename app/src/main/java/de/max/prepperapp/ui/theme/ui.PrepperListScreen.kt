@@ -27,14 +27,14 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
+import de.max.prepperapp.R
 import de.max.prepperapp.domain.ShoppingListItem
-
-private const val NEW_CATEGORY_OPTION = "Neue Kategorie"
-private const val CUSTOM_UNIT_OPTION = "Sonstige"
 
 @Composable
 fun PrepperListScreen(
@@ -47,7 +47,10 @@ fun PrepperListScreen(
     onDeleteCustomItem: (ShoppingListItem) -> Unit,
     onAddCustomItem: (String, String, Double, String) -> Unit
 ) {
-    val context = androidx.compose.ui.platform.LocalContext.current
+    val context = LocalContext.current
+
+    val shareSubject = stringResource(id = R.string.list_share_subject)
+    val shareChooserTitle = stringResource(id = R.string.list_share_chooser)
 
     var searchText by rememberSaveable {
         mutableStateOf("")
@@ -57,6 +60,9 @@ fun PrepperListScreen(
         mutableStateOf(false)
     }
 
+    val customItemsCategory = stringResource(id = R.string.list_custom_items_category)
+    val newCategoryOption = stringResource(id = R.string.list_new_category)
+
     val categoryOptions = buildList {
         items
             .map { item -> item.category }
@@ -65,11 +71,11 @@ fun PrepperListScreen(
                 add(category)
             }
 
-        if (!contains("Eigene Artikel")) {
-            add("Eigene Artikel")
+        if (!contains(customItemsCategory)) {
+            add(customItemsCategory)
         }
 
-        add(NEW_CATEGORY_OPTION)
+        add(newCategoryOption)
     }
 
     val trimmedSearchText = searchText.trim()
@@ -132,13 +138,13 @@ fun PrepperListScreen(
             onClick = {
                 val sendIntent = Intent(Intent.ACTION_SEND).apply {
                     type = "text/plain"
-                    putExtra(Intent.EXTRA_SUBJECT, "PrepperApp Einkaufsliste")
+                    putExtra(Intent.EXTRA_SUBJECT, shareSubject)
                     putExtra(Intent.EXTRA_TEXT, shareText)
                 }
 
                 val shareIntent = Intent.createChooser(
                     sendIntent,
-                    "Einkaufsliste teilen"
+                    shareChooserTitle
                 )
 
                 context.startActivity(shareIntent)
@@ -146,7 +152,7 @@ fun PrepperListScreen(
             enabled = items.isNotEmpty(),
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text(text = "Liste teilen")
+            Text(text = stringResource(id = R.string.list_share_button))
         }
     }
 }
@@ -161,23 +167,23 @@ fun PrepperListHintCard() {
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
             Text(
-                text = "Hinweis zur Liste",
+                text = stringResource(id = R.string.list_hint_title),
                 style = MaterialTheme.typography.titleSmall,
                 fontWeight = FontWeight.Bold
             )
 
             Text(
-                text = "☐  (links): Artikel ist erledigt/gekauft abhaken.",
+                text = stringResource(id = R.string.list_hint_checked),
                 style = MaterialTheme.typography.bodyMedium
             )
 
             Text(
-                text = "✖  (rechts): Artikel als nicht benötigt ausblenden.",
+                text = stringResource(id = R.string.list_hint_hide),
                 style = MaterialTheme.typography.bodyMedium
             )
 
             Text(
-                text = "✖  bei eigenen Artikeln: Artikel löschen.",
+                text = stringResource(id = R.string.list_hint_delete_custom),
                 style = MaterialTheme.typography.bodyMedium
             )
         }
@@ -201,16 +207,22 @@ fun PrepperAddCustomItemCard(
         mutableStateOf("1")
     }
 
+    val customUnitOption = stringResource(id = R.string.list_custom_unit_option)
+    val defaultUnit = "stk"
+
     var selectedUnit by rememberSaveable {
-        mutableStateOf("stk")
+        mutableStateOf(defaultUnit)
     }
 
     var customUnit by rememberSaveable {
         mutableStateOf("")
     }
 
+    val customItemsCategory = stringResource(id = R.string.list_custom_items_category)
+    val newCategoryOption = stringResource(id = R.string.list_new_category)
+
     var selectedCategory by rememberSaveable {
-        mutableStateOf("Eigene Artikel")
+        mutableStateOf(customItemsCategory)
     }
 
     var customCategory by rememberSaveable {
@@ -221,13 +233,13 @@ fun PrepperAddCustomItemCard(
         .replace(",", ".")
         .toDoubleOrNull()
 
-    val finalCategory = if (selectedCategory == NEW_CATEGORY_OPTION) {
+    val finalCategory = if (selectedCategory == newCategoryOption) {
         customCategory.trim()
     } else {
         selectedCategory.trim()
     }
 
-    val finalUnit = if (selectedUnit == CUSTOM_UNIT_OPTION) {
+    val finalUnit = if (selectedUnit == customUnitOption) {
         customUnit.trim()
     } else {
         selectedUnit.trim()
@@ -260,16 +272,16 @@ fun PrepperAddCustomItemCard(
                     modifier = Modifier.weight(1f)
                 ) {
                     Text(
-                        text = "+ Eigener Artikel",
+                        text = stringResource(id = R.string.list_add_custom_title),
                         style = MaterialTheme.typography.titleSmall,
                         fontWeight = FontWeight.Bold
                     )
 
                     Text(
                         text = if (expanded) {
-                            "Artikel erfassen"
+                            stringResource(id = R.string.list_add_custom_expanded)
                         } else {
-                            "Zusätzlichen Vorrat ergänzen"
+                            stringResource(id = R.string.list_add_custom_collapsed)
                         },
                         style = MaterialTheme.typography.bodyMedium
                     )
@@ -289,7 +301,7 @@ fun PrepperAddCustomItemCard(
                         name = value
                     },
                     label = {
-                        Text(text = "Artikelname")
+                        Text(text = stringResource(id = R.string.list_item_name))
                     },
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth()
@@ -306,7 +318,7 @@ fun PrepperAddCustomItemCard(
                             quantityText = value
                         },
                         label = {
-                            Text(text = "Menge")
+                            Text(text = stringResource(id = R.string.list_quantity))
                         },
                         singleLine = true,
                         keyboardOptions = KeyboardOptions(
@@ -316,7 +328,7 @@ fun PrepperAddCustomItemCard(
                     )
 
                     PrepperDropdownField(
-                        label = "Einheit",
+                        label = stringResource(id = R.string.list_unit),
                         selectedValue = selectedUnit,
                         options = listOf(
                             "g",
@@ -324,8 +336,8 @@ fun PrepperAddCustomItemCard(
                             "ml",
                             "l",
                             "stk",
-                            "Packungen",
-                            CUSTOM_UNIT_OPTION
+                            stringResource(id = R.string.list_unit_packs),
+                            customUnitOption
                         ),
                         onSelectedValueChange = { value ->
                             selectedUnit = value
@@ -334,14 +346,14 @@ fun PrepperAddCustomItemCard(
                     )
                 }
 
-                if (selectedUnit == CUSTOM_UNIT_OPTION) {
+                if (selectedUnit == customUnitOption) {
                     OutlinedTextField(
                         value = customUnit,
                         onValueChange = { value ->
                             customUnit = value
                         },
                         label = {
-                            Text(text = "Sonstige Einheit")
+                            Text(text = stringResource(id = R.string.list_custom_unit))
                         },
                         singleLine = true,
                         modifier = Modifier.fillMaxWidth()
@@ -349,7 +361,7 @@ fun PrepperAddCustomItemCard(
                 }
 
                 PrepperDropdownField(
-                    label = "Kategorie",
+                    label = stringResource(id = R.string.list_category),
                     selectedValue = selectedCategory,
                     options = categoryOptions,
                     onSelectedValueChange = { value ->
@@ -357,14 +369,14 @@ fun PrepperAddCustomItemCard(
                     }
                 )
 
-                if (selectedCategory == NEW_CATEGORY_OPTION) {
+                if (selectedCategory == newCategoryOption) {
                     OutlinedTextField(
                         value = customCategory,
                         onValueChange = { value ->
                             customCategory = value
                         },
                         label = {
-                            Text(text = "Neue Kategorie")
+                            Text(text = stringResource(id = R.string.list_new_category))
                         },
                         singleLine = true,
                         modifier = Modifier.fillMaxWidth()
@@ -389,7 +401,7 @@ fun PrepperAddCustomItemCard(
                     enabled = canAddItem,
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    Text(text = "Artikel hinzufügen")
+                    Text(text = stringResource(id = R.string.list_add_item_button))
                 }
             }
         }
@@ -414,7 +426,7 @@ fun PrepperListFilterCard(
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             Text(
-                text = "Liste filtern",
+                text = stringResource(id = R.string.list_filter_title),
                 style = MaterialTheme.typography.titleSmall,
                 fontWeight = FontWeight.Bold
             )
@@ -423,7 +435,7 @@ fun PrepperListFilterCard(
                 value = searchText,
                 onValueChange = onSearchTextChange,
                 label = {
-                    Text(text = "Artikel suchen")
+                    Text(text = stringResource(id = R.string.list_search_label))
                 },
                 singleLine = true,
                 modifier = Modifier.fillMaxWidth()
@@ -438,12 +450,17 @@ fun PrepperListFilterCard(
                     modifier = Modifier.weight(1f)
                 ) {
                     Text(
-                        text = "Nur offene Artikel anzeigen",
+                        text = stringResource(id = R.string.list_show_only_open),
                         style = MaterialTheme.typography.bodyLarge
                     )
 
                     Text(
-                        text = "Angezeigt: $filteredItemCount von $allItemCount · Erledigt: $checkedItemCount",
+                        text = stringResource(
+                            id = R.string.list_filter_status,
+                            filteredItemCount,
+                            allItemCount,
+                            checkedItemCount
+                        ),
                         style = MaterialTheme.typography.bodyMedium
                     )
                 }
@@ -478,7 +495,13 @@ fun PrepperDropdownField(
             },
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text(text = "$label: $selectedValue")
+            Text(
+                text = stringResource(
+                    id = R.string.list_dropdown_value,
+                    label,
+                    selectedValue
+                )
+            )
         }
 
         DropdownMenu(
@@ -530,23 +553,35 @@ fun PrepperShoppingListCard(
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             Text(
-                text = "Einkaufsliste",
+                text = stringResource(id = R.string.list_title),
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold
             )
 
             Text(
                 text = if (isFiltered) {
-                    "Angezeigt: ${items.size} von $allItemCount · Erledigt: $checkedItemCount"
+                    stringResource(
+                        id = R.string.list_done_status_filtered,
+                        items.size,
+                        allItemCount,
+                        checkedItemCount
+                    )
                 } else {
-                    "Erledigt: $checkedItemCount von $allItemCount"
+                    stringResource(
+                        id = R.string.list_done_status,
+                        checkedItemCount,
+                        allItemCount
+                    )
                 },
                 style = MaterialTheme.typography.bodyMedium
             )
 
             if (hiddenItemCount > 0) {
                 Text(
-                    text = "Ausgeblendet: $hiddenItemCount Artikel",
+                    text = stringResource(
+                        id = R.string.list_hidden_status,
+                        hiddenItemCount
+                    ),
                     style = MaterialTheme.typography.bodyMedium
                 )
             }
@@ -560,7 +595,7 @@ fun PrepperShoppingListCard(
                         expandedCategories = categoryNames
                     }
                 ) {
-                    Text(text = "Alle öffnen")
+                    Text(text = stringResource(id = R.string.list_open_all))
                 }
 
                 TextButton(
@@ -568,16 +603,16 @@ fun PrepperShoppingListCard(
                         expandedCategories = emptyList()
                     }
                 ) {
-                    Text(text = "Alle schließen")
+                    Text(text = stringResource(id = R.string.list_close_all))
                 }
             }
 
             if (items.isEmpty()) {
                 Text(
                     text = if (isFiltered) {
-                        "Keine passenden Artikel gefunden."
+                        stringResource(id = R.string.list_empty_filtered)
                     } else {
-                        "Alle Artikel sind ausgeblendet. Setze ausgeblendete Artikel im Profil zurück, um die Liste wieder anzuzeigen."
+                        stringResource(id = R.string.list_empty_all_hidden)
                     },
                     style = MaterialTheme.typography.bodyMedium
                 )
@@ -653,7 +688,11 @@ fun PrepperShoppingCategorySection(
                 )
 
                 Text(
-                    text = "$checkedInCategory von ${items.size} erledigt",
+                    text = stringResource(
+                        id = R.string.list_category_done,
+                        checkedInCategory,
+                        items.size
+                    ),
                     style = MaterialTheme.typography.bodyMedium
                 )
             }

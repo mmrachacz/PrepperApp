@@ -28,8 +28,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import de.max.prepperapp.R
 
 @Composable
 fun PrepperProfileScreen(
@@ -81,11 +83,11 @@ fun PrepperProfileScreen(
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         PrepperSectionCard(
-            title = "Profil anpassen",
-            subtitle = "Lege fest, für wen du planst."
+            title = stringResource(id = R.string.profile_section_title),
+            subtitle = stringResource(id = R.string.profile_section_subtitle)
         ) {
             PrepperCounterRow(
-                label = "Erwachsene",
+                label = stringResource(id = R.string.profile_adults),
                 value = adults,
                 minValue = 1,
                 onMinus = onAdultsMinus,
@@ -95,7 +97,7 @@ fun PrepperProfileScreen(
             PrepperSoftDivider()
 
             PrepperCounterRow(
-                label = "Kleine Kinder",
+                label = stringResource(id = R.string.profile_small_children),
                 value = smallChildren,
                 minValue = 0,
                 onMinus = onSmallChildrenMinus,
@@ -105,7 +107,7 @@ fun PrepperProfileScreen(
             PrepperSoftDivider()
 
             PrepperCounterRow(
-                label = "Große Kinder",
+                label = stringResource(id = R.string.profile_big_children),
                 value = bigChildren,
                 minValue = 0,
                 onMinus = onBigChildrenMinus,
@@ -115,7 +117,7 @@ fun PrepperProfileScreen(
             PrepperSoftDivider()
 
             PrepperCounterRow(
-                label = "Tage",
+                label = stringResource(id = R.string.profile_days),
                 value = days,
                 minValue = 1,
                 onMinus = onDaysMinus,
@@ -127,7 +129,7 @@ fun PrepperProfileScreen(
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 PrepperPresetButton(
-                    text = "7 Tage",
+                    text = stringResource(id = R.string.profile_days_preset, 7),
                     selected = days == 7,
                     onClick = {
                         onDaysPresetSelected(7)
@@ -136,7 +138,7 @@ fun PrepperProfileScreen(
                 )
 
                 PrepperPresetButton(
-                    text = "14 Tage",
+                    text = stringResource(id = R.string.profile_days_preset, 14),
                     selected = days == 14,
                     onClick = {
                         onDaysPresetSelected(14)
@@ -145,7 +147,7 @@ fun PrepperProfileScreen(
                 )
 
                 PrepperPresetButton(
-                    text = "30 Tage",
+                    text = stringResource(id = R.string.profile_days_preset, 30),
                     selected = days == 30,
                     onClick = {
                         onDaysPresetSelected(30)
@@ -157,7 +159,7 @@ fun PrepperProfileScreen(
             PrepperSoftDivider()
 
             PrepperSwitchRow(
-                label = "Hund einplanen",
+                label = stringResource(id = R.string.profile_has_dog),
                 checked = hasDog,
                 onCheckedChange = onHasDogChange
             )
@@ -179,11 +181,11 @@ fun PrepperProfileScreen(
         }
 
         PrepperSectionCard(
-            title = "Vorlieben",
-            subtitle = "Passe deine Planung an deine Bedürfnisse an."
+            title = stringResource(id = R.string.profile_preferences_title),
+            subtitle = stringResource(id = R.string.profile_preferences_subtitle)
         ) {
             PrepperSwitchRow(
-                label = "Sparsam planen",
+                label = stringResource(id = R.string.profile_prefer_budget),
                 checked = preferBudget,
                 onCheckedChange = onPreferBudgetChange
             )
@@ -191,7 +193,7 @@ fun PrepperProfileScreen(
             PrepperSoftDivider()
 
             PrepperSwitchRow(
-                label = "Vegetarisch",
+                label = stringResource(id = R.string.profile_prefer_vegetarian),
                 checked = preferVegetarian,
                 onCheckedChange = onPreferVegetarianChange
             )
@@ -199,7 +201,7 @@ fun PrepperProfileScreen(
             PrepperSoftDivider()
 
             PrepperSwitchRow(
-                label = "Wenig Kochen",
+                label = stringResource(id = R.string.profile_prefer_low_cooking),
                 checked = preferLowCooking,
                 onCheckedChange = onPreferLowCookingChange
             )
@@ -235,14 +237,14 @@ fun PrepperProfileScreen(
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Text(
-                    text = "Hinweis",
+                    text = stringResource(id = R.string.profile_hint_title),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onSecondaryContainer
                 )
 
                 Text(
-                    text = "Die Einkaufsliste berücksichtigt kleine Kinder, große Kinder, Windeln und deine Vorlieben automatisch.",
+                    text = stringResource(id = R.string.profile_hint_text),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSecondaryContainer
                 )
@@ -307,15 +309,15 @@ fun PrepperAppearanceCard(
     onUseDarkThemeChange: (Boolean) -> Unit
 ) {
     PrepperSectionCard(
-        title = "Darstellung",
-        subtitle = "Wähle zwischen ruhigem hellen Stil und robustem dunklen Stil."
+        title = stringResource(id = R.string.profile_appearance_title),
+        subtitle = stringResource(id = R.string.profile_appearance_subtitle)
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             PrepperPresetButton(
-                text = "Hell",
+                text = stringResource(id = R.string.profile_theme_light),
                 selected = !useDarkTheme,
                 onClick = {
                     onUseDarkThemeChange(false)
@@ -324,7 +326,7 @@ fun PrepperAppearanceCard(
             )
 
             PrepperPresetButton(
-                text = "Dunkel",
+                text = stringResource(id = R.string.profile_theme_dark),
                 selected = useDarkTheme,
                 onClick = {
                     onUseDarkThemeChange(true)
@@ -351,8 +353,13 @@ fun PrepperResetSettingsCard(
     }
 
     PrepperSectionCard(
-        title = "Daten & Zurücksetzen",
-        subtitle = "Abgehakt: $checkedItemCount · Ausgeblendet: $hiddenItemCount · Eigene: $customItemCount"
+        title = stringResource(id = R.string.profile_reset_title),
+        subtitle = stringResource(
+            id = R.string.profile_reset_subtitle,
+            checkedItemCount,
+            hiddenItemCount,
+            customItemCount
+        )
     ) {
         Row(
             modifier = Modifier
@@ -364,7 +371,11 @@ fun PrepperResetSettingsCard(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = if (expanded) "Optionen ausblenden" else "Optionen anzeigen",
+                text = if (expanded) {
+                    stringResource(id = R.string.profile_reset_hide_options)
+                } else {
+                    stringResource(id = R.string.profile_reset_show_options)
+                },
                 style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.onSurface
             )
@@ -383,7 +394,7 @@ fun PrepperResetSettingsCard(
                 enabled = checkedItemCount > 0,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text(text = "Abgehakte Artikel zurücksetzen")
+                Text(text = stringResource(id = R.string.profile_reset_checked_items))
             }
 
             OutlinedButton(
@@ -391,7 +402,7 @@ fun PrepperResetSettingsCard(
                 enabled = hiddenItemCount > 0,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text(text = "Ausgeblendete Artikel zurücksetzen")
+                Text(text = stringResource(id = R.string.profile_reset_hidden_items))
             }
 
             OutlinedButton(
@@ -399,25 +410,25 @@ fun PrepperResetSettingsCard(
                 enabled = customItemCount > 0,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text(text = "Eigene Artikel löschen")
+                Text(text = stringResource(id = R.string.profile_reset_custom_items))
             }
 
             OutlinedButton(
                 onClick = onResetProfile,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text(text = "Profil auf Standard zurücksetzen")
+                Text(text = stringResource(id = R.string.profile_reset_profile))
             }
 
             Button(
                 onClick = onResetAll,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text(text = "Alles zurücksetzen")
+                Text(text = stringResource(id = R.string.profile_reset_all))
             }
 
             Text(
-                text = "Hinweis: „Alles zurücksetzen“ löscht Haken, ausgeblendete Artikel und eigene Artikel und setzt das Profil zurück.",
+                text = stringResource(id = R.string.profile_reset_hint),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -442,13 +453,19 @@ fun PrepperDiaperSettingsCard(
         mutableStateOf(needsDiapers)
     }
 
-    PrepperSectionCard(
-        title = "Windeln & Pflege",
-        subtitle = if (needsDiapers) {
-            if (expanded) "Auswahl geöffnet" else "Auswahl eingeklappt"
+    val subtitle = if (needsDiapers) {
+        if (expanded) {
+            stringResource(id = R.string.profile_diapers_subtitle_expanded)
         } else {
-            "Nicht eingeplant"
+            stringResource(id = R.string.profile_diapers_subtitle_collapsed)
         }
+    } else {
+        stringResource(id = R.string.profile_diapers_subtitle_disabled)
+    }
+
+    PrepperSectionCard(
+        title = stringResource(id = R.string.profile_diapers_title),
+        subtitle = subtitle
     ) {
         Row(
             modifier = Modifier
@@ -460,7 +477,7 @@ fun PrepperDiaperSettingsCard(
             verticalAlignment = Alignment.CenterVertically
         ) {
             PrepperSwitchRow(
-                label = "Windeln einplanen",
+                label = stringResource(id = R.string.profile_diapers_switch),
                 checked = needsDiapers,
                 onCheckedChange = { checked ->
                     onNeedsDiapersChange(checked)
@@ -481,13 +498,13 @@ fun PrepperDiaperSettingsCard(
 
         if (needsDiapers && expanded) {
             Text(
-                text = "Tageswindeln zählt Kinder, die über 24 Stunden Windeln brauchen. Nachtwindeln zählt Kinder, die tagsüber trocken sind, aber nachts noch eine Windel brauchen. Ein Kind bitte nicht doppelt zählen.",
+                text = stringResource(id = R.string.profile_diapers_explanation),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
 
             PrepperCounterRow(
-                label = "Kinder mit Tageswindeln",
+                label = stringResource(id = R.string.profile_day_diaper_children),
                 value = dayDiaperChildren,
                 minValue = 0,
                 maxValue = maxDayDiaperChildren,
@@ -498,7 +515,7 @@ fun PrepperDiaperSettingsCard(
             PrepperSoftDivider()
 
             PrepperCounterRow(
-                label = "Kinder mit Nachtwindeln",
+                label = stringResource(id = R.string.profile_night_diaper_children),
                 value = nightDiaperChildren,
                 minValue = 0,
                 maxValue = maxNightDiaperChildren,

@@ -15,8 +15,10 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import de.max.prepperapp.R
 
 @Composable
 fun PrepperOverviewScreen(
@@ -44,6 +46,12 @@ fun PrepperOverviewScreen(
 
     val progressPercent = (progress * 100).toInt()
 
+    val dogText = if (hasDog) {
+        stringResource(id = R.string.overview_dog_yes)
+    } else {
+        stringResource(id = R.string.overview_dog_no)
+    }
+
     Column(
         verticalArrangement = Arrangement.spacedBy(18.dp)
     ) {
@@ -58,25 +66,37 @@ fun PrepperOverviewScreen(
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Text(
-                    text = "Haushaltsprofil",
+                    text = stringResource(id = R.string.overview_household_title),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold
                 )
 
                 Text(
-                    text = "$days Tage Notvorrat",
+                    text = stringResource(
+                        id = R.string.overview_days_supply,
+                        days
+                    ),
                     style = MaterialTheme.typography.bodyLarge
                 )
 
                 Text(
-                    text = "$adults Erwachsene · $smallChildren kleine Kinder · $bigChildren große Kinder · " +
-                            if (hasDog) "1 Hund" else "kein Hund",
+                    text = stringResource(
+                        id = R.string.overview_household_summary,
+                        adults,
+                        smallChildren,
+                        bigChildren,
+                        dogText
+                    ),
                     style = MaterialTheme.typography.bodyMedium
                 )
 
                 if (dayDiaperChildren > 0 || nightDiaperChildren > 0) {
                     Text(
-                        text = "$dayDiaperChildren mit Tageswindeln · $nightDiaperChildren mit Nachtwindeln",
+                        text = stringResource(
+                            id = R.string.overview_diaper_summary,
+                            dayDiaperChildren,
+                            nightDiaperChildren
+                        ),
                         style = MaterialTheme.typography.bodyMedium
                     )
                 }
@@ -94,16 +114,45 @@ fun PrepperOverviewScreen(
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Text(
-                    text = "Erste Vorratsberechnung",
+                    text = stringResource(id = R.string.overview_calculation_title),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold
                 )
 
-                Text(text = "Wasser: ca. $waterLiters Liter")
-                Text(text = "Nudeln/Reis/Haferflocken: ca. ${formatPrepperOneDecimal(pastaOrRiceKg)} kg")
-                Text(text = "Tomatensoße: ca. $tomatoSauceGlasses Gläser")
-                Text(text = "Konserven/Fertiggerichte: ca. $cannedMeals Stück")
-                Text(text = "Gaskartuschen: ca. $gasCartridges Stück")
+                Text(
+                    text = stringResource(
+                        id = R.string.overview_water,
+                        waterLiters
+                    )
+                )
+
+                Text(
+                    text = stringResource(
+                        id = R.string.overview_staples,
+                        formatPrepperOneDecimal(pastaOrRiceKg)
+                    )
+                )
+
+                Text(
+                    text = stringResource(
+                        id = R.string.overview_tomato_sauce,
+                        tomatoSauceGlasses
+                    )
+                )
+
+                Text(
+                    text = stringResource(
+                        id = R.string.overview_canned_meals,
+                        cannedMeals
+                    )
+                )
+
+                Text(
+                    text = stringResource(
+                        id = R.string.overview_gas_cartridges,
+                        gasCartridges
+                    )
+                )
             }
         }
 
@@ -115,18 +164,25 @@ fun PrepperOverviewScreen(
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 Text(
-                    text = "Fortschritt",
+                    text = stringResource(id = R.string.overview_progress_title),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold
                 )
 
                 Text(
-                    text = "Erledigt: $checkedItemCount von $totalItemCount Artikeln",
+                    text = stringResource(
+                        id = R.string.overview_progress_done,
+                        checkedItemCount,
+                        totalItemCount
+                    ),
                     style = MaterialTheme.typography.bodyLarge
                 )
 
                 Text(
-                    text = "Fortschritt: $progressPercent %",
+                    text = stringResource(
+                        id = R.string.overview_progress_percent,
+                        progressPercent
+                    ),
                     style = MaterialTheme.typography.bodyMedium
                 )
 
@@ -147,14 +203,14 @@ fun PrepperOverviewScreen(
                 onClick = onOpenProfile,
                 modifier = Modifier.weight(1f)
             ) {
-                Text(text = "Profil ändern")
+                Text(text = stringResource(id = R.string.overview_open_profile))
             }
 
             Button(
                 onClick = onOpenList,
                 modifier = Modifier.weight(1f)
             ) {
-                Text(text = "Liste öffnen")
+                Text(text = stringResource(id = R.string.overview_open_list))
             }
         }
     }

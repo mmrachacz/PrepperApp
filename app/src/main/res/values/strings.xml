@@ -6,4 +6,104 @@
     <string name="navigation_overview">Übersicht</string>
     <string name="navigation_profile">Profil</string>
     <string name="navigation_list">Liste</string>
+
+    <string name="profile_section_title">Profil anpassen</string>
+    <string name="profile_section_subtitle">Lege fest, für wen du planst.</string>
+    <string name="profile_adults">Erwachsene</string>
+    <string name="profile_small_children">Kleine Kinder</string>
+    <string name="profile_big_children">Große Kinder</string>
+    <string name="profile_days">Tage</string>
+    <string name="profile_days_preset">%1$d Tage</string>
+    <string name="profile_has_dog">Hund einplanen</string>
+
+    <string name="profile_preferences_title">Vorlieben</string>
+    <string name="profile_preferences_subtitle">Passe deine Planung an deine Bedürfnisse an.</string>
+    <string name="profile_prefer_budget">Sparsam planen</string>
+    <string name="profile_prefer_vegetarian">Vegetarisch</string>
+    <string name="profile_prefer_low_cooking">Wenig Kochen</string>
+
+    <string name="profile_appearance_title">Darstellung</string>
+    <string name="profile_appearance_subtitle">Wähle zwischen ruhigem hellen Stil und robustem dunklen Stil.</string>
+    <string name="profile_theme_light">Hell</string>
+    <string name="profile_theme_dark">Dunkel</string>
+
+    <string name="profile_reset_title">Daten &amp; Zurücksetzen</string>
+    <string name="profile_reset_subtitle">Abgehakt: %1$d · Ausgeblendet: %2$d · Eigene: %3$d</string>
+    <string name="profile_reset_show_options">Optionen anzeigen</string>
+    <string name="profile_reset_hide_options">Optionen ausblenden</string>
+    <string name="profile_reset_checked_items">Abgehakte Artikel zurücksetzen</string>
+    <string name="profile_reset_hidden_items">Ausgeblendete Artikel zurücksetzen</string>
+    <string name="profile_reset_custom_items">Eigene Artikel löschen</string>
+    <string name="profile_reset_profile">Profil auf Standard zurücksetzen</string>
+    <string name="profile_reset_all">Alles zurücksetzen</string>
+    <string name="profile_reset_hint">Hinweis: „Alles zurücksetzen“ löscht Haken, ausgeblendete Artikel und eigene Artikel und setzt das Profil zurück.</string>
+
+    <string name="profile_diapers_title">Windeln &amp; Pflege</string>
+    <string name="profile_diapers_subtitle_expanded">Auswahl geöffnet</string>
+    <string name="profile_diapers_subtitle_collapsed">Auswahl eingeklappt</string>
+    <string name="profile_diapers_subtitle_disabled">Nicht eingeplant</string>
+    <string name="profile_diapers_switch">Windeln einplanen</string>
+    <string name="profile_diapers_explanation">Tageswindeln zählt Kinder, die über 24 Stunden Windeln brauchen. Nachtwindeln zählt Kinder, die tagsüber trocken sind, aber nachts noch eine Windel brauchen. Ein Kind bitte nicht doppelt zählen.</string>
+    <string name="profile_day_diaper_children">Kinder mit Tageswindeln</string>
+    <string name="profile_night_diaper_children">Kinder mit Nachtwindeln</string>
+
+    <string name="profile_hint_title">Hinweis</string>
+    <string name="profile_hint_text">Die Einkaufsliste berücksichtigt kleine Kinder, große Kinder, Windeln und deine Vorlieben automatisch.</string>
+
+    <string name="overview_household_title">Haushaltsprofil</string>
+    <string name="overview_days_supply">%1$d Tage Notvorrat</string>
+    <string name="overview_dog_yes">1 Hund</string>
+    <string name="overview_dog_no">kein Hund</string>
+    <string name="overview_household_summary">%1$d Erwachsene · %2$d kleine Kinder · %3$d große Kinder · %4$s</string>
+    <string name="overview_diaper_summary">%1$d mit Tageswindeln · %2$d mit Nachtwindeln</string>
+    <string name="overview_calculation_title">Erste Vorratsberechnung</string>
+    <string name="overview_water">Wasser: ca. %1$d Liter</string>
+    <string name="overview_staples">Nudeln/Reis/Haferflocken: ca. %1$s kg</string>
+    <string name="overview_tomato_sauce">Tomatensoße: ca. %1$d Gläser</string>
+    <string name="overview_canned_meals">Konserven/Fertiggerichte: ca. %1$d Stück</string>
+    <string name="overview_gas_cartridges">Gaskartuschen: ca. %1$d Stück</string>
+    <string name="overview_progress_title">Fortschritt</string>
+    <string name="overview_progress_done">Erledigt: %1$d von %2$d Artikeln</string>
+    <string name="overview_progress_percent">Fortschritt: %1$d %%</string>
+    <string name="overview_open_profile">Profil ändern</string>
+    <string name="overview_open_list">Liste öffnen</string>
+
+    <string name="list_share_subject">VorratKompass Einkaufsliste</string>
+    <string name="list_share_chooser">Einkaufsliste teilen</string>
+    <string name="list_share_button">Liste teilen</string>
+
+    <string name="list_hint_title">Hinweis zur Liste</string>
+    <string name="list_hint_checked">☐  (links): Artikel ist erledigt/gekauft abhaken.</string>
+    <string name="list_hint_hide">✖  (rechts): Artikel als nicht benötigt ausblenden.</string>
+    <string name="list_hint_delete_custom">✖  bei eigenen Artikeln: Artikel löschen.</string>
+
+    <string name="list_add_custom_title">+ Eigener Artikel</string>
+    <string name="list_add_custom_expanded">Artikel erfassen</string>
+    <string name="list_add_custom_collapsed">Zusätzlichen Vorrat ergänzen</string>
+    <string name="list_item_name">Artikelname</string>
+    <string name="list_quantity">Menge</string>
+    <string name="list_unit">Einheit</string>
+    <string name="list_custom_unit">Sonstige Einheit</string>
+    <string name="list_category">Kategorie</string>
+    <string name="list_new_category">Neue Kategorie</string>
+    <string name="list_custom_items_category">Eigene Artikel</string>
+    <string name="list_custom_unit_option">Sonstige</string>
+    <string name="list_unit_packs">Packungen</string>
+    <string name="list_add_item_button">Artikel hinzufügen</string>
+
+    <string name="list_filter_title">Liste filtern</string>
+    <string name="list_search_label">Artikel suchen</string>
+    <string name="list_show_only_open">Nur offene Artikel anzeigen</string>
+    <string name="list_filter_status">Angezeigt: %1$d von %2$d · Erledigt: %3$d</string>
+
+    <string name="list_title">Einkaufsliste</string>
+    <string name="list_done_status">Erledigt: %1$d von %2$d</string>
+    <string name="list_done_status_filtered">Angezeigt: %1$d von %2$d · Erledigt: %3$d</string>
+    <string name="list_hidden_status">Ausgeblendet: %1$d Artikel</string>
+    <string name="list_open_all">Alle öffnen</string>
+    <string name="list_close_all">Alle schließen</string>
+    <string name="list_empty_filtered">Keine passenden Artikel gefunden.</string>
+    <string name="list_empty_all_hidden">Alle Artikel sind ausgeblendet. Setze ausgeblendete Artikel im Profil zurück, um die Liste wieder anzuzeigen.</string>
+    <string name="list_category_done">%1$d von %2$d erledigt</string>
+    <string name="list_dropdown_value">%1$s: %2$s</string>
 </resources>
