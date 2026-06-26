@@ -223,6 +223,8 @@ fun PrepperProfileScreen(
             onResetAll = onResetAll
         )
 
+        PrepperInfoLegalCard()
+
         Card(
             modifier = Modifier.fillMaxWidth(),
             colors = CardDefaults.cardColors(
@@ -433,6 +435,110 @@ fun PrepperResetSettingsCard(
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
+    }
+}
+
+@Composable
+fun PrepperInfoLegalCard() {
+    var expanded by rememberSaveable {
+        mutableStateOf(false)
+    }
+
+    PrepperSectionCard(
+        title = stringResource(id = R.string.info_legal_title),
+        subtitle = stringResource(id = R.string.info_legal_subtitle)
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable {
+                    expanded = !expanded
+                },
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = if (expanded) {
+                    stringResource(id = R.string.info_legal_hide)
+                } else {
+                    stringResource(id = R.string.info_legal_show)
+                },
+                style = MaterialTheme.typography.bodyLarge,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+
+            Text(
+                text = if (expanded) "−" else "+",
+                style = MaterialTheme.typography.titleLarge,
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.primary
+            )
+        }
+
+        if (expanded) {
+            PrepperInfoLegalBlock(
+                title = stringResource(id = R.string.info_about_title),
+                text = stringResource(id = R.string.info_about_text)
+            )
+
+            PrepperSoftDivider()
+
+            PrepperInfoLegalBlock(
+                title = stringResource(id = R.string.info_calculation_title),
+                text = stringResource(id = R.string.info_calculation_text)
+            )
+
+            PrepperSoftDivider()
+
+            PrepperInfoLegalBlock(
+                title = stringResource(id = R.string.info_sources_title),
+                text = stringResource(id = R.string.info_sources_text)
+            )
+
+            PrepperSoftDivider()
+
+            PrepperInfoLegalBlock(
+                title = stringResource(id = R.string.info_privacy_title),
+                text = stringResource(id = R.string.info_privacy_text)
+            )
+
+            PrepperSoftDivider()
+
+            PrepperInfoLegalBlock(
+                title = stringResource(id = R.string.info_responsibility_title),
+                text = stringResource(id = R.string.info_responsibility_text)
+            )
+
+            PrepperSoftDivider()
+
+            PrepperInfoLegalBlock(
+                title = stringResource(id = R.string.info_version_title),
+                text = stringResource(id = R.string.info_version_text)
+            )
+        }
+    }
+}
+
+@Composable
+fun PrepperInfoLegalBlock(
+    title: String,
+    text: String
+) {
+    Column(
+        verticalArrangement = Arrangement.spacedBy(4.dp)
+    ) {
+        Text(
+            text = title,
+            style = MaterialTheme.typography.bodyLarge,
+            fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colorScheme.primary
+        )
+
+        Text(
+            text = text,
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
     }
 }
 

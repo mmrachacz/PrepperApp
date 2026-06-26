@@ -43,6 +43,11 @@ import de.max.prepperapp.domain.ShoppingListItem
 import de.max.prepperapp.domain.SupplyCalculator
 import de.max.prepperapp.ui.theme.PrepperAppTheme
 import androidx.compose.foundation.background
+import android.app.Activity
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.platform.LocalView
+import androidx.core.view.WindowCompat
 
 enum class PrepperScreen {
     OVERVIEW,
@@ -232,6 +237,8 @@ fun PrepperMainScreen(modifier: Modifier = Modifier) {
     PrepperAppTheme(
         darkTheme = useDarkTheme
     ) {
+        PrepperSystemBars(useDarkTheme = useDarkTheme)
+
         Surface(
             modifier = modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background
@@ -652,6 +659,31 @@ fun PrepperNavigationButton(
                 style = MaterialTheme.typography.bodyMedium,
                 fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal
             )
+        }
+    }
+}
+
+@Composable
+fun PrepperSystemBars(
+    useDarkTheme: Boolean
+) {
+    val view = LocalView.current
+    val systemBarColor = MaterialTheme.colorScheme.background.toArgb()
+
+    DisposableEffect(useDarkTheme, systemBarColor) {
+        if (!view.isInEditMode) {
+            val window = (view.context as Activity).window
+
+            window.statusBarColor = systemBarColor
+            window.navigationBarColor = systemBarColor
+
+            val insetsController = WindowCompat.getInsetsController(window, view)
+
+            insetsController.isAppearanceLightStatusBars = !useDarkTheme
+            insetsController.isAppearanceLightNavigationBars = !useDarkTheme
+        }
+
+        onDispose {
         }
     }
 }

@@ -540,6 +540,7 @@ fun PrepperShoppingListCard(
     val groupedItems = items.groupBy { it.category }
     val categoryNames = groupedItems.keys.toList()
     val categorySaveKey = categoryNames.joinToString(separator = "|")
+    val shouldShowInlineAd = !isFiltered && allItemCount >= 20 && groupedItems.size >= 4
 
     var expandedCategories by rememberSaveable(categorySaveKey) {
         mutableStateOf(categoryNames)
@@ -623,14 +624,12 @@ fun PrepperShoppingListCard(
                 val categoryItems = entry.value
                 val isExpanded = expandedCategories.contains(categoryName)
 
-                val checkedInCategory = categoryItems.count { item ->
-                    checkedItemKeys.contains(item.prepperKey())
-                }
-
                 PrepperShoppingCategorySection(
                     category = categoryName,
                     items = categoryItems,
-                    checkedInCategory = checkedInCategory,
+                    checkedInCategory = categoryItems.count { item ->
+                        checkedItemKeys.contains(item.prepperKey())
+                    },
                     isExpanded = isExpanded,
                     checkedItemKeys = checkedItemKeys,
                     onToggleExpanded = {
@@ -645,10 +644,38 @@ fun PrepperShoppingListCard(
                     onDeleteCustomItem = onDeleteCustomItem
                 )
 
+                if (shouldShowInlineAd && index == 1) {
+                    HorizontalDivider()
+                    PrepperInlineAdBanner()
+                }
+
                 if (index < groupedItems.entries.size - 1) {
                     HorizontalDivider()
                 }
             }
+        }
+    }
+}
+
+@Composable
+fun PrepperInlineAdBanner() {
+    Card(
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Column(
+            modifier = Modifier.padding(vertical = 8.dp),
+            verticalArrangement = Arrangement.spacedBy(4.dp)
+        ) {
+            Text(
+                text = stringResource(id = R.string.ad_label),
+                modifier = Modifier.padding(horizontal = 14.dp),
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+
+            PrepperAdBanner(
+                modifier = Modifier.fillMaxWidth()
+            )
         }
     }
 }

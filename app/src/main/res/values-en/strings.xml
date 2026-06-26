@@ -251,4 +251,28 @@
     <string name="supply_item_dog_travel_bowl">Foldable dog travel bowl</string>
     <string name="supply_item_dog_spare_leash">Spare leash</string>
     <string name="supply_item_dog_documents">Check vaccination card/dog documents</string>
+    <string name="info_legal_title">Info &amp; legal</string>
+    <string name="info_legal_subtitle">Notes about the app, privacy and calculation.</string>
+    <string name="info_legal_show">Show notes</string>
+    <string name="info_legal_hide">Hide notes</string>
+
+    <string name="info_about_title">About SupplyCompass</string>
+    <string name="info_about_text">SupplyCompass helps you plan private emergency supplies for your household, children and pets.</string>
+
+    <string name="info_calculation_title">Calculation note</string>
+    <string name="info_calculation_text">The quantities are approximate values and do not replace individual advice. Always review the list based on age, health, diet, medication, pets and your living situation.</string>
+
+    <string name="info_sources_title">Source note</string>
+    <string name="info_sources_text">The planning is conceptually based on publicly known emergency preparedness recommendations, especially from German public sources for civil protection, disaster preparedness, food supply and nutrition planning. This app is not an official government service.</string>
+
+    <string name="info_privacy_title">Privacy</string>
+    <string name="info_privacy_text">Currently, the app stores your input only locally on your device. No accounts are created and no supply data is transferred to a server.</string>
+
+    <string name="info_responsibility_title">Personal responsibility</string>
+    <string name="info_responsibility_text">Please check shelf life, storage, allergies, medication, fuels and safety issues yourself. Especially gas, fuel and medication require proper handling and storage.</string>
+
+    <string name="info_version_title">Version</string>
+    <string name="info_version_text">SupplyCompass 1.0</string>
+
+    <string name="ad_label">Ad</string>
 </resources>

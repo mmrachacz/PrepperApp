@@ -251,4 +251,28 @@
     <string name="supply_item_dog_travel_bowl">Faltbarer Hunde-Reisenapf</string>
     <string name="supply_item_dog_spare_leash">Ersatzleine</string>
     <string name="supply_item_dog_documents">Impfausweis/Unterlagen Hund prüfen</string>
+    <string name="info_legal_title">Info &amp; Rechtliches</string>
+    <string name="info_legal_subtitle">Hinweise zu App, Datenschutz und Berechnung.</string>
+    <string name="info_legal_show">Hinweise anzeigen</string>
+    <string name="info_legal_hide">Hinweise ausblenden</string>
+
+    <string name="info_about_title">Über VorratKompass</string>
+    <string name="info_about_text">VorratKompass unterstützt dich dabei, einen privaten Notvorrat für Haushalt, Kinder und Haustiere zu planen.</string>
+
+    <string name="info_calculation_title">Hinweis zur Berechnung</string>
+    <string name="info_calculation_text">Die Mengen sind Näherungswerte und ersetzen keine individuelle Beratung. Prüfe die Liste immer passend zu Alter, Gesundheit, Ernährung, Medikamenten, Haustieren und Wohnsituation.</string>
+
+    <string name="info_sources_title">Quellenhinweis</string>
+    <string name="info_sources_text">Die Planung orientiert sich inhaltlich an öffentlich bekannten Empfehlungen zur privaten Notfallvorsorge, insbesondere am Bundesamt für Bevölkerungsschutz und Katastrophenhilfe sowie an der Bundesanstalt für Landwirtschaft und Ernährung. Die App ist kein offizielles Behördenangebot.</string>
+
+    <string name="info_privacy_title">Datenschutz</string>
+    <string name="info_privacy_text">Aktuell speichert die App deine Eingaben nur lokal auf deinem Gerät. Es werden keine Konten angelegt und keine Vorratsdaten an einen Server übertragen.</string>
+
+    <string name="info_responsibility_title">Eigenverantwortung</string>
+    <string name="info_responsibility_text">Bitte kontrolliere Haltbarkeit, Lagerung, Allergien, Medikamente, Brennstoffe und Sicherheitsfragen selbst. Besonders bei Gas, Kraftstoff und Medikamenten gelten Sicherheits- und Lagerhinweise.</string>
+
+    <string name="info_version_title">Version</string>
+    <string name="info_version_text">VorratKompass 1.0</string>
+
+    <string name="ad_label">Anzeige</string>
 </resources>
