@@ -13,8 +13,6 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
 
-private const val PREPPER_TEST_BANNER_AD_UNIT_ID = "ca-app-pub-3940256099942544/6300978111"
-
 @Composable
 fun PrepperAdBanner(
     modifier: Modifier = Modifier
@@ -34,7 +32,7 @@ fun PrepperAdBanner(
             factory = { context ->
                 AdView(context).apply {
                     setAdSize(AdSize.BANNER)
-                    adUnitId = PREPPER_TEST_BANNER_AD_UNIT_ID
+                    adUnitId = PrepperAdIds.BANNER_AD_UNIT_ID
                     layoutParams = ViewGroup.LayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT

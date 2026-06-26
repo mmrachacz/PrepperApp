@@ -12,7 +12,6 @@ import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 
 object PrepperInterstitialAdManager {
 
-    private const val TEST_INTERSTITIAL_AD_UNIT_ID = "ca-app-pub-3940256099942544/1033173712"
     private const val MIN_TIME_BETWEEN_INTERSTITIALS_MS = 3 * 60 * 1000L
 
     private var interstitialAd: InterstitialAd? = null
@@ -34,7 +33,7 @@ object PrepperInterstitialAdManager {
 
         InterstitialAd.load(
             context.applicationContext,
-            TEST_INTERSTITIAL_AD_UNIT_ID,
+            PrepperAdIds.INTERSTITIAL_AD_UNIT_ID,
             adRequest,
             object : InterstitialAdLoadCallback() {
                 override fun onAdLoaded(ad: InterstitialAd) {
