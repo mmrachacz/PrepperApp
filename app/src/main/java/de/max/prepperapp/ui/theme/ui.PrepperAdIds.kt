@@ -6,8 +6,8 @@ object PrepperAdIds {
      * Echte AdMob-Ad-Unit-IDs für Supply Compass.
      *
      * Beim Entwickeln/Testen keine echten Anzeigen anklicken.
-     * Für intensives Testen später besser Testgeräte in AdMob/SDK verwenden.
+     * Der Emulator ist normalerweise automatisch ein Testgerät.
      */
-    const val BANNER_AD_UNIT_ID = "ca-app-pub-3940256099942544/6300978111"
-    const val INTERSTITIAL_AD_UNIT_ID = "ca-app-pub-3940256099942544/1033173712"
+    const val BANNER_AD_UNIT_ID = "ca-app-pub-4373503126749210/4975244636"
+    const val INTERSTITIAL_AD_UNIT_ID = "ca-app-pub-4373503126749210/5565850115"
 }
