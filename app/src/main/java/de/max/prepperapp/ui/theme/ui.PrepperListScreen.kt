@@ -207,8 +207,9 @@ fun PrepperAddCustomItemCard(
         mutableStateOf("1")
     }
 
-    val customUnitOption = stringResource(id = R.string.list_custom_unit_option)
-    val defaultUnit = "stk"
+  val customUnitOption = stringResource(id = R.string.list_custom_unit_option)
+  val piecesUnit = stringResource(id = R.string.supply_unit_pieces)
+  val defaultUnit = piecesUnit
 
     var selectedUnit by rememberSaveable {
         mutableStateOf(defaultUnit)
@@ -330,15 +331,15 @@ fun PrepperAddCustomItemCard(
                     PrepperDropdownField(
                         label = stringResource(id = R.string.list_unit),
                         selectedValue = selectedUnit,
-                        options = listOf(
-                            "g",
-                            "kg",
-                            "ml",
-                            "l",
-                            "stk",
-                            stringResource(id = R.string.list_unit_packs),
-                            customUnitOption
-                        ),
+                       options = listOf(
+                             "g",
+                             "kg",
+                             "ml",
+                             "l",
+                             piecesUnit,
+                             stringResource(id = R.string.list_unit_packs),
+                             customUnitOption
+                      ),
                         onSelectedValueChange = { value ->
                             selectedUnit = value
                         },
