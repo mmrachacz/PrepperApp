@@ -156,6 +156,8 @@ fun PrepperOverviewScreen(
             }
         }
 
+        PrepperInlineAdBanner()
+
         Card(
             modifier = Modifier.fillMaxWidth()
         ) {
