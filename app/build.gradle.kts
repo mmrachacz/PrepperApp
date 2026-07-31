@@ -12,7 +12,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "de.max.prepperapp"
+        applicationId = "de.max.supplycompass"
         minSdk = 24
         targetSdk = 36
         versionCode = 1
