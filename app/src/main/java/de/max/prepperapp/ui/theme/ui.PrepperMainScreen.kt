@@ -58,6 +58,14 @@ enum class PrepperScreen {
 @Composable
 fun PrepperMainScreen(modifier: Modifier = Modifier) {
     val context = LocalContext.current
+
+    val customItemsCategory = stringResource(
+        id = R.string.list_custom_items_category
+    )
+
+    val piecesUnit = stringResource(
+        id = R.string.supply_unit_pieces
+    )
     val storage = remember(context) {
         PrepperStorage(context)
     }
@@ -423,9 +431,9 @@ fun PrepperMainScreen(modifier: Modifier = Modifier) {
                                 val newItem = ShoppingListItem(
                                     id = "custom_${System.currentTimeMillis()}",
                                     name = name,
-                                    category = category.ifBlank { "Eigene Artikel" },
+                                    category = category.ifBlank { customItemsCategory },
                                     quantity = quantity,
-                                    unit = unit.ifBlank { "Stück" }
+                                    unit = unit.ifBlank { piecesUnit }
                                 )
 
                                 customItems = customItems + newItem
