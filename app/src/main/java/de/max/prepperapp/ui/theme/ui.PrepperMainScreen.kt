@@ -284,7 +284,9 @@ fun PrepperMainScreen(modifier: Modifier = Modifier) {
                                 currentScreen = PrepperScreen.PROFILE
                             },
                             onOpenList = {
-                                currentScreen = PrepperScreen.LIST
+                                PrepperInterstitialAdManager.showIfAvailable(context) {
+                                    currentScreen = PrepperScreen.LIST
+                                }
                             }
                         )
                     }
