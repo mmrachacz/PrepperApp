@@ -12,7 +12,11 @@ fun formatPrepperShoppingQuantity(item: ShoppingListItem): String {
     val packageCount = item.packageCount()
     val packageSizeGrams = item.packageSizeGrams
 
-    return if (packageCount != null && packageSizeGrams != null && packageCount > 0) {
+    return if (
+        packageCount != null &&
+        packageSizeGrams != null &&
+        packageCount > 0
+    ) {
         "$baseQuantity · $packageCount × ${formatPrepperPackageSize(packageSizeGrams)}"
     } else {
         baseQuantity
@@ -20,7 +24,10 @@ fun formatPrepperShoppingQuantity(item: ShoppingListItem): String {
 }
 
 fun formatPrepperPackageSize(packageSizeGrams: Int): String {
-    return if (packageSizeGrams >= 1000 && packageSizeGrams % 1000 == 0) {
+    return if (
+        packageSizeGrams >= 1000 &&
+        packageSizeGrams % 1000 == 0
+    ) {
         "${packageSizeGrams / 1000} kg"
     } else {
         "$packageSizeGrams g"
@@ -28,13 +35,21 @@ fun formatPrepperPackageSize(packageSizeGrams: Int): String {
 }
 
 fun formatPrepperOneDecimal(value: Double): String {
-    return String.format(Locale.GERMANY, "%.1f", value)
+    return String.format(
+        Locale.getDefault(),
+        "%.1f",
+        value
+    )
 }
 
 fun formatPrepperQuantity(value: Double): String {
     return if (value % 1.0 == 0.0) {
         value.toInt().toString()
     } else {
-        String.format(Locale.GERMANY, "%.1f", value)
+        String.format(
+            Locale.getDefault(),
+            "%.1f",
+            value
+        )
     }
 }
